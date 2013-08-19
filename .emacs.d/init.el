@@ -47,6 +47,7 @@
  '(show-paren-match ((((class color) (background light)) (:background "black"))))
  '(vertical-border ((t nil)))
 )
+(normal-erase-is-backspace-mode 0)
 
 ;; ------------
 ;; -- Macros --
