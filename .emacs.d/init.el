@@ -18,7 +18,7 @@
 (require 'compile)
 (ido-mode t)
 (menu-bar-mode -1)
-(normal-erase-is-backspace-mode 1)
+(normal-erase-is-backspace-mode 0)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq column-number-mode t)
@@ -47,7 +47,6 @@
  '(show-paren-match ((((class color) (background light)) (:background "black"))))
  '(vertical-border ((t nil)))
 )
-(normal-erase-is-backspace-mode 0)
 
 ;; ------------
 ;; -- Macros --
