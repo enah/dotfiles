@@ -52,9 +52,9 @@
 (normal-erase-is-backspace-mode 1)
 
 (set-face-attribute 'default nil
-		    :family "Monaco"
-		    :height 150)
-
+		    :family "Times New Roman"
+		    :height 200)
+; Andale Mono
 
 ;(custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -99,6 +99,9 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+(global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "C-c C-u") 'uncomment-region)
 
 ;; ---------------------------
 ;; -- JS Mode configuration --
