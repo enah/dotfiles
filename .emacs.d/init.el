@@ -51,10 +51,14 @@
       backup-directory-alist `(("." . "~/.saves")))
 (normal-erase-is-backspace-mode 1)
 
+;; (set-face-attribute 'default nil
+;; 		    :family "Times New Roman"
+;; 		    :height 200)
+
 (set-face-attribute 'default nil
-		    :family "Times New Roman"
-		    :height 200)
-; Andale Mono
+		    :family "Andale Mono"
+		    :height 150)
+
 
 ;(custom-set-faces
  ;; custom-set-faces was added by Custom.
