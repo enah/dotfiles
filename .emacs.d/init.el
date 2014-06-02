@@ -5,6 +5,13 @@
 ;; -- Global Settings --
 ;; ---------------------
 (add-to-list 'load-path "~/.emacs.d")
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+(package-initialize)
+
 (require 'cl)
 (require 'ido)
 (require 'ffap)
@@ -12,11 +19,44 @@
 (require 'ansi-color)
 (require 'recentf)
 (require 'linum)
-(require 'smooth-scrolling)
+;;(require 'smooth-scrolling)
 (require 'whitespace)
 (require 'dired-x)
 (require 'compile)
 (require 'saveplace)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;;(add-hook 'web-mode-hook (lambda () (setq comment-start "<%#" comment-end "%>")))
+
+(require 'auto-complete-config)
+(ac-config-default)
+
+;; Essay mode
+;; (add-hook 'text-mode-hook (lambda () (flyspell-mode 1)))
+;; (global-set-key (kbd "<f8>") 'ispell-word)
+;; (global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
+;; (global-set-key (kbd "C-M-<f8>") 'flyspell-buffer)
+;; (global-set-key (kbd "C-<") 'flyspell-check-previous-highlighted-word)
+;; (defun flyspell-check-next-highlighted-word ()
+;;   "Custom function to spell check next highlighted word"
+;;   (interactive)
+;;   (flyspell-goto-next-error)
+;;   (ispell-word)
+;;   )
+;; (global-set-key (kbd "C-<f8>") 'flyspell-check-next-highlighted-word)
+;; (add-hook 'text-mode-hook 'longlines-mode)
+
+(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+(add-hook 'LaTeX-mode-hook 'turn-on-visual-line-mode)
+(setq TeX-PDF-mode t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+
 (ido-mode t)
 (menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)
@@ -51,12 +91,20 @@
       backup-directory-alist `(("." . "~/.saves")))
 (normal-erase-is-backspace-mode 1)
 
+;(autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
+(add-to-list
+ 'auto-mode-alist
+ '("\\.m$" . matlab-mode))
+(setq matlab-indent-function t)
+(setq matlab-shell-command "matlab")
+
+;; For essays
 ;; (set-face-attribute 'default nil
 ;; 		    :family "Times New Roman"
 ;; 		    :height 200)
 
 (set-face-attribute 'default nil
-		    :family "Andale Mono"
+		    :family "Liberation Mono"
 		    :height 150)
 
 
@@ -92,9 +140,9 @@
 (global-set-key "\M-o" 'other-window)
 (global-set-key "\M-i" 'back-window)
 (global-set-key "\C-z" 'zap-to-char)
-(global-set-key "\C-h" 'backward-delete-char)
+;;(global-set-key "\C-m" 'backward-delete-char)
 (global-set-key "\M-d" 'delete-word)
-(global-set-key "\M-h" 'backward-delete-word)
+(global-set-key "\M-m" 'backward-delete-word)
 (global-set-key "\M-u" 'zap-to-char)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -104,8 +152,8 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
-(global-set-key (kbd "C-c C-c") 'comment-region)
-(global-set-key (kbd "C-c C-u") 'uncomment-region)
+;; (global-set-key (kbd "C-c C-c") 'comment-region)
+;; (global-set-key (kbd "C-c C-u") 'uncomment-region)
 
 ;; ---------------------------
 ;; -- JS Mode configuration --
